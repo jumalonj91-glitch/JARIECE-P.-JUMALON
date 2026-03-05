@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | PED 105</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* This override makes this specific page container full width */
+        .container.full-width {
+            max-width: 95%; 
+            margin: 20px auto;
+            padding: 40px 20px;
+        }
+        
+        /* Adjusting gallery to show more items per row on large screens */
+        .gallery {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        @media (min-width: 1200px) {
+            .gallery {
+                grid-template-columns: repeat(5, 1fr); /* Shows all 5 in one row on big screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About Me</a>
+        <a href="ict.html">ICT Policies</a>
+        <a href="non-digital.html">Non-Digital</a>
+        <a href="digital.html">Digital Tools</a>
+        <a href="collab.html">Collaborative Task</a>
+        <a href="flexible.html">Learning Design</a>
+        <a href="reflection.html">Reflection</a>
+    </nav>
+
+    <div class="container full-width">
+        <h2>Welcome to my E-Portfolio! This space showcases my passion for teaching, creativity in learning, and commitment to shaping minds through the Filipino language."</h2>
+        <p>"Teaching is not just sharing knowledge, but inspiring minds, building dreams, and making learning meaningful for every student."</p>
+        
+        <div class="gallery">
+            <div class="card">
+                <img src="pic3.jpg" alt="Academic">
+                <div class="card-body">
+                    <strong>Catholic Youth Ministry</strong>
+                    <p>I served as the President of the Catholic Youth Ministry for three years. This leadership role allowed me to guide and inspire fellow youth members in various 
+                        spiritual and community activities. Through this experience, I developed strong leadership skills, 
+                        a sense of responsibility, and a deeper commitment to service and faith.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="pic6.jpg" alt="Tech">
+                <div class="card-body">
+                    <strong>Best Demonstrator</strong>
+                    <p>In the subject Facilitating Learner-Centered Teaching, I was recognized as the Best Demonstrator. This achievement 
+                        reflects my ability to effectively apply learner-centered strategies and actively engage students in the teaching-learning 
+                        process. Through this experience, I was able to showcase my skills in instructional delivery, classroom management, and the 
+                        implementation of interactive and student-focused approaches to learning.
+You sent
+</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="pic4.jpg" alt="Creative">
+                <div class="card-body">
+                    <strong>SANAYSAY AT TALUMPATI</strong>
+                    <p>In the subject SANAYSAY AT TALUMPATI, I had the opportunity to serve as the host or emcee during a Graduation Ceremony.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="pic5.jpg" alt="Team">
+                <div class="card-body">
+                    <strong>PANITIKAN NG REHIYON</strong>
+                    <p>In the subject PANITIKAN NG REHIYON, I also had the opportunity to serve as a host in a podcast activity. This experience 
+                        allowed me to facilitate meaningful discussions and express ideas clearly and confidently. Through this activity, I was able 
+                        to strengthen my communication skills, deepen my understanding of regional literature, and enhance my ability to engage an 
+                        diverse audience in an academic setting.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="pic2.jpg" alt="Future">
+                <div class="card-body">
+                    <strong>Future Goals</strong>
+                    <p>I Love Teaching. As a student teacher, I am passionate about guiding learners, sharing knowledge, and creating meaningful 
+                        learning experiences. Teaching allows me to inspire students and help them reach their full potential.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="container full-width">
+    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">My Teaching Soundtrack ♫</h2>
+    
+    <audio id="master-audio-player"></audio>
+
+    <div class="horizontal-playlist">
+        <div class="music-card-horizontal" onclick="togglePlay(this, 'music1.mp3')">
+            <img src="pic10.jpg" class="album-art" alt="Ariana">
+            <div class="track-meta">
+                <span class="track-title">intro (end of the world)</span>
+                <span class="track-artist">Ariana Grande</span>
+            </div>
+            <div class="status-label">CLICK TO PLAY</div>
+        </div>
+
+        <div class="music-card-horizontal" onclick="togglePlay(this, 'music2.mp3')">
+            <img src="pic11.jpg" class="album-art" alt="Mariah">
+            <div class="track-meta">
+                <span class="track-title">Fantasy</span>
+                <span class="track-artist">Mariah Carey</span>
+            </div>
+            <div class="status-label">CLICK TO PLAY</div>
+        </div>
+
+        <div class="music-card-horizontal" onclick="togglePlay(this, 'music3.mp3')">
+            <img src="pic12.jpg" class="album-art" alt="Avril">
+            <div class="track-meta">
+                <span class="track-title">girlfriend</span>
+                <span class="track-artist">Avril Lavigne</span>
+            </div>
+            <div class="status-label">CLICK TO PLAY</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const audio = document.getElementById('master-audio-player');
+    let currentActiveCard = null;
+
+    function togglePlay(clickedCard, songUrl) {
+        // SCENARIO 1: Clicking the same song that is already playing
+        if (currentActiveCard === clickedCard) {
+            if (audio.paused) {
+                audio.play();
+                clickedCard.classList.add('is-playing');
+                clickedCard.querySelector('.status-label').innerText = 'PLAYING...';
+            } else {
+                audio.pause();
+                clickedCard.classList.remove('is-playing');
+                clickedCard.querySelector('.status-label').innerText = 'PAUSED';
+            }
+            return;
+        }
+
+        // SCENARIO 2: Clicking a NEW song
+        // 1. Reset the UI of the previous card
+        if (currentActiveCard) {
+            currentActiveCard.classList.remove('is-playing');
+            currentActiveCard.querySelector('.status-label').innerText = 'CLICK TO PLAY';
+        }
+
+        // 2. Switch the audio source (This automatically stops the old song)
+        audio.src = songUrl;
+        audio.play();
+        
+        // 3. Set the new active card and update UI
+        currentActiveCard = clickedCard;
+        clickedCard.classList.add('is-playing');
+        clickedCard.querySelector('.status-label').innerText = 'PLAYING...';
+    }
+
+    // Auto-reset UI if the song reaches the end
+    audio.onended = function() {
+        if (currentActiveCard) {
+            currentActiveCard.classList.remove('is-playing');
+            currentActiveCard.querySelector('.status-label').innerText = 'CLICK TO PLAY';
+            currentActiveCard = null;
+        }
+    };
+</script>
+    <footer>
+        <p>PED 105 Portfolio</p>
+        <span>© 2026 Crafted with ♡ | Practical Exercise 1</span>
+    </footer>
+
+</body>
+</html>
